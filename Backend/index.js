@@ -1,0 +1,51 @@
+const express = require('express'),
+    app = express(),
+    passport = require('passport'),
+    port = process.env.PORT || 80,
+    cors = require('cors')
+
+const bcrypt = require('bcrypt')
+
+const db = require('./database.js')
+let users = db.users
+require('./passport.js')
+
+const router = require('express').Router(),
+    jwt = require('jsonwebtoken')
+
+
+app.use(cors({ origin: 'http://localhost:3000' }))
+
+app.use('/api', router)
+router.use(express.json())
+router.use(express.urlencoded({ extended: false }))
+
+router.post('/register',
+async (req, res) => {
+    try {
+        const SALT_ROUND = 10
+        const { username, email } = req.body
+        if (db.checkExistingUser(username) !== db.NOT_FOUND)
+            return res.json({ status: "Duplicated user" })
+
+        let id = (users.users.length)?users.users[users.users.length - 1].id+1:1
+        const password = await bcrypt.hash(req.body.password, SALT_ROUND)
+        users.users.push({ id, username, password, email })
+        res.json({ message: "Register success" })
+    } catch {
+        res.json({ message: "Cannot register" })
+    }
+})
+
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', { session: false }, (err, user, info) => {
+        console.log('Login: ', req.body, user, err, info)
+        if (err) return next(err)
+        if (user) {
+            const token = jwt.sign(user, db.SECRET,{expiresIn: '1d'})
+            return res.json({ user, token })
+        } else
+            return res.status(422).json(info)
+    })(req, res, next)
+ })
+ 
