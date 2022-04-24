@@ -15,7 +15,6 @@ let lists = {
 
 const SECRET = 'your_jwt_secret'
 const NOT_FOUND = -1
-
 exports.users = users 
 exports.lists = lists
 exports.SECRET = SECRET
