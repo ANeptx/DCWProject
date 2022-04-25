@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Linkto from "next/link";
 
-const navbar = ({ token }) => {
+const Navbar = ({ token }) => {
 
     return (
         <>
@@ -34,7 +34,7 @@ const navbar = ({ token }) => {
     );
 };
 
-export default navbar;
+export default Navbar;
 
 export function getServerSideProps({ req, res }) {
     return { props: { token: req.cookies.token || "" } };
