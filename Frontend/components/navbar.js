@@ -12,16 +12,12 @@ const navbar = ({ token }) => {
                             <a className="rounded-lg text-white font-bold text-lg py-2 px-4 lg:-ml-2 hover:bg-white hover:text-cyan-900"  >Home</a>
                         </Link>
 
-                        <Link href="/searchAnime">
-                            <a className="rounded-lg text-white font-bold text-lg py-2 px-4 lg:-ml-2 hover:bg-white hover:text-cyan-900" >Search Anime</a>
-                        </Link>
-
                         <Link href="/allanime">
                             <a className="rounded-lg text-white font-bold text-lg py-2 px-4 lg:-ml-2 hover:bg-white hover:text-cyan-900" >All Anime</a>
                         </Link>
 
-                        <Link href="/gallery">
-                            <a className="rounded-lg text-white font-bold text-lg py-2 px-4 lg:-ml-2 hover:bg-white hover:text-cyan-900" >Gallery</a>
+                        <Link href="/source">
+                            <a className="rounded-lg text-white font-bold text-lg py-2 px-4 lg:-ml-2 hover:bg-white hover:text-cyan-900" >Source</a>
                         </Link>
 
                         <Linkto href="/login">

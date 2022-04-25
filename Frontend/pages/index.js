@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar";
 import Footer from "../components/Footer";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
+
 
 export default function Home() {
 
@@ -15,10 +15,8 @@ export default function Home() {
       </Head>
       <main>
         <Navbar />
-        <div
-          id="head"
-          className="max-h-screen min-w-full w-full h-full bg-[url('https://images7.alphacoders.com/120/thumb-1920-1206753.png')] bg-cover bg-no-repeat bg-center relative"
-        >
+        <div className="relative max-h-screen min-w-full w-full h-full bg-[url('https://images7.alphacoders.com/120/thumb-1920-1206753.png')] bg-cover bg-no-repeat bg-center" >
+
         </div>
         <Footer />
       </main>
